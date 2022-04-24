@@ -9,7 +9,6 @@ import UIKit
 import TinyConstraints
 
 class ViewController: UIViewController {
-
     let tinyView0 = TinyView(backgroundColor: .link, cornerRadius: 0, borderWidth: 0)
     let tinyView1 = TinyView(backgroundColor: .red)
     let tinyView2 = TinyView(backgroundColor: .green)
@@ -21,19 +20,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
 
-        addViews()
         addConstraints()
     }
 }
 
-
 extension ViewController {
-
-    private func addViews() {
-        view.addSubview(tinyView0)
-    }
-
     private func addConstraints() {
+        view.addSubview(tinyView0)
         tinyView0.edgesToSuperview()
     }
 }
