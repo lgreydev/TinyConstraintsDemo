@@ -61,10 +61,10 @@
 				5E9DF0EC281570560083DD6A /* AppDelegate.swift */,
 				5E9DF0EE281570560083DD6A /* SceneDelegate.swift */,
 				5E9DF0F0281570560083DD6A /* ViewController.swift */,
+				5E9DF1002815730C0083DD6A /* TinyView.swift */,
 				5E9DF0F5281570580083DD6A /* Assets.xcassets */,
 				5E9DF0F7281570580083DD6A /* LaunchScreen.storyboard */,
 				5E9DF0FA281570580083DD6A /* Info.plist */,
-				5E9DF1002815730C0083DD6A /* TinyView.swift */,
 			);
 			path = TinyConstraintsDemo;
 			sourceTree = "<group>";
