@@ -29,7 +29,6 @@ extension ViewController {
         view.addSubview(tinyView0)
         tinyView0.horizontalToSuperview(insets: TinyEdgeInsets(top: 0, left: 10, bottom: 0, right: 50), usingSafeArea: false)
 
-        tinyView0.topToSuperview(offset: 0, usingSafeArea: true)
-        tinyView0.bottomToSuperview()
+        tinyView0.verticalToSuperview(insets: TinyEdgeInsets(top: 50, left: 10, bottom: 50, right: 0), usingSafeArea: false)
     }
 }
