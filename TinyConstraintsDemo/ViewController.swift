@@ -29,6 +29,6 @@ extension ViewController {
         view.addSubview(tinyView0)
         tinyView0.height(200)
         tinyView0.width(200)
-        tinyView0.centerInSuperview(offset: CGPoint(x: -100, y: 100))
+        tinyView0.originToSuperview(insets: TinyEdgeInsets(top: 50, left: 50, bottom: 0, right: 0), usingSafeArea: false)
     }
 }
