@@ -27,8 +27,8 @@ class ViewController: UIViewController {
 extension ViewController {
     private func addConstraints() {
         view.addSubview(tinyView0)
-        tinyView0.height(200)
         tinyView0.width(200)
-        tinyView0.originToSuperview(insets: TinyEdgeInsets(top: 50, left: 50, bottom: 0, right: 0), usingSafeArea: false)
+        tinyView0.heightToSuperview()
+//        tinyView0.widthToSuperview()
     }
 }
