@@ -32,18 +32,7 @@ extension ViewController {
         tinyView1.centerInSuperview()
 
         tinyView1.addSubview(tinyView2)
-        tinyView2.width(200)
-        tinyView2.height(200)
-        tinyView2.centerInSuperview()
-
-        view.addSubview(tinyView3)
-        tinyView3.width(200)
-        tinyView3.height(200)
-
-
-        tinyView3.addSubview(tinyView4)
-        tinyView4.width(100)
-        tinyView4.height(100)
-        tinyView4.center(in: tinyView3)
+        tinyView2.height(150)
+        tinyView2.edges(to: tinyView1, excluding: .bottom, insets: TinyEdgeInsets(top: 10, left: 32, bottom: 0, right: 10))
     }
 }
