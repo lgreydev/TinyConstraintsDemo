@@ -35,5 +35,15 @@ extension ViewController {
         tinyView2.width(200)
         tinyView2.height(200)
         tinyView2.centerInSuperview()
+
+        view.addSubview(tinyView3)
+        tinyView3.width(200)
+        tinyView3.height(200)
+
+
+        tinyView3.addSubview(tinyView4)
+        tinyView4.width(100)
+        tinyView4.height(100)
+        tinyView4.center(in: tinyView3)
     }
 }
