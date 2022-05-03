@@ -27,13 +27,18 @@ class ViewController: UIViewController {
 extension ViewController {
     private func addConstraints() {
         view.addSubview(tinyView1)
-        tinyView1.width(300)
+        tinyView1.width(200)
         tinyView1.height(200)
-        tinyView1.centerInSuperview(offset: CGPoint(x: 0, y: -120))
+        tinyView1.centerInSuperview(offset: CGPoint(x: 0, y: -200))
 
         view.addSubview(tinyView2)
         tinyView2.width(to: tinyView1, multiplier: 1, offset: 50)
         tinyView2.height(to: tinyView1, multiplier: 1)
-        tinyView2.centerInSuperview(offset: CGPoint(x: 0, y: 120))
+        tinyView2.centerInSuperview(offset: CGPoint(x: 0, y: 20))
+
+        view.addSubview(tinyView3)
+        tinyView3.width(100)
+        tinyView3.aspectRatio(1)
+        tinyView3.centerInSuperview(offset: CGPoint(x: 0, y: 200))
     }
 }
