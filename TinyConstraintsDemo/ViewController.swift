@@ -26,28 +26,20 @@ class ViewController: UIViewController {
 
 extension ViewController {
     private func addConstraints() {
-        view.addSubview(tinyView1)
-        tinyView1.originToSuperview(insets: TinyEdgeInsets(top: 32, left: 10, bottom: 0, right: 0), usingSafeArea: true)
-        tinyView1.size(CGSize(width: 200, height: 200))
+        view.addSubview(tinyView0)
+        tinyView0.edgesToSuperview(
+            excluding: .bottom,
+            insets: TinyEdgeInsets(top: 10, left: 10, bottom: 0, right: 10),
+            usingSafeArea: true)
+//        tinyView0.height(300)
 
-        view.addSubview(tinyView2)
-        tinyView2.leadingToTrailing(of: tinyView1, offset: 32)
-        tinyView2.topToSuperview(offset: 32, usingSafeArea: true)
-        tinyView2.size(CGSize(width: 100, height: 100))
+        tinyView1.height(100)
+        tinyView2.height(200)
+        tinyView0.stack([tinyView1, tinyView2], axis: .vertical, spacing: 10)
 
-        view.addSubview(tinyView3)
-        tinyView3.topToBottom(of: tinyView1, offset: 10)
-        tinyView3.leading(to: view, offset: 10)
-        tinyView3.size(CGSize(width: 100, height: 100))
 
-        view.addSubview(tinyView4)
-        tinyView4.leftToRight(of: tinyView3, offset: 10)
-        tinyView4.top(to: tinyView3)
-        tinyView4.size(CGSize(width: 100, height: 100))
-
-        view.addSubview(tinyView5)
-        tinyView5.centerX(to: tinyView4)
-        tinyView5.topToBottom(of: tinyView4, offset: 10)
-        tinyView5.size(CGSize(width: 50, height: 50))
+        tinyView4.width(100)
+        tinyView5.width(100)
+        tinyView1.stack([tinyView4, tinyView5, UIView()], axis: .horizontal, spacing: 10)
     }
 }
