@@ -27,7 +27,13 @@ class ViewController: UIViewController {
 extension ViewController {
     private func addConstraints() {
         view.addSubview(tinyView1)
-        view.addSubview(tinyView2)
+        tinyView1.width(300)
+        tinyView1.height(300)
+        tinyView1.centerInSuperview()
 
+        tinyView1.addSubview(tinyView2)
+        tinyView2.width(200)
+        tinyView2.height(200)
+        tinyView2.centerInSuperview()
     }
 }
