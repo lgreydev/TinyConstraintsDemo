@@ -39,5 +39,15 @@ extension ViewController {
         tinyView3.topToBottom(of: tinyView1, offset: 10)
         tinyView3.leading(to: view, offset: 10)
         tinyView3.size(CGSize(width: 100, height: 100))
+
+        view.addSubview(tinyView4)
+        tinyView4.leftToRight(of: tinyView3, offset: 10)
+        tinyView4.top(to: tinyView3)
+        tinyView4.size(CGSize(width: 100, height: 100))
+
+        view.addSubview(tinyView5)
+        tinyView5.centerX(to: tinyView4)
+        tinyView5.topToBottom(of: tinyView4, offset: 10)
+        tinyView5.size(CGSize(width: 50, height: 50))
     }
 }
