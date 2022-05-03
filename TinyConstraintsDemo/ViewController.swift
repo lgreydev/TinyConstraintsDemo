@@ -28,11 +28,12 @@ extension ViewController {
     private func addConstraints() {
         view.addSubview(tinyView1)
         tinyView1.width(300)
-        tinyView1.height(300)
-        tinyView1.centerInSuperview()
+        tinyView1.height(200)
+        tinyView1.centerInSuperview(offset: CGPoint(x: 0, y: -120))
 
-        tinyView1.addSubview(tinyView2)
-        tinyView2.size(to: tinyView1, multiplier: 0.3)
-        tinyView2.centerInSuperview()
+        view.addSubview(tinyView2)
+        tinyView2.width(to: tinyView1, multiplier: 1, offset: 50)
+        tinyView2.height(to: tinyView1, multiplier: 1)
+        tinyView2.centerInSuperview(offset: CGPoint(x: 0, y: 120))
     }
 }
