@@ -16,8 +16,12 @@ class ViewController: UIViewController {
     let tinyView4 = TinyView(backgroundColor: .cyan)
     let tinyView5 = TinyView(backgroundColor: .orange)
 
-//    lazy var oldConstraints = tinyView1.size(CGSize(width: 100, height: 100), isActive: false)
-    lazy var newConstraints = tinyView1.size(CGSize(width: 300, height: 200), isActive: false)
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.text = "ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg gggggggggggggggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg gggggggggggggggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg gggggggggggggggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg ggggggggggggg gggggggggggggggggggggggggg ggggggggggggg ggggggggggggg g"
+        label.numberOfLines = 0
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +34,9 @@ class ViewController: UIViewController {
 extension ViewController {
     private func addConstraints() {
         view.addSubview(tinyView1)
-        tinyView1.originToSuperview(insets: TinyEdgeInsets(top: 10, left: 10, bottom: 0, right: 0), usingSafeArea: true)
+        tinyView1.edgesToSuperview(excluding: .bottom, insets: .uniform(32), usingSafeArea: true)
 
-        newConstraints.activate()
-
-        UIViewPropertyAnimator(duration: 5, dampingRatio: 0.4) {
-            self.view.layoutIfNeeded()
-        }.startAnimation()
+        tinyView2.height(100)
+        tinyView1.stack([tinyView2, label], axis: .vertical, spacing: 10)
     }
 }
