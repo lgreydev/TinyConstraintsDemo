@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     let tinyView4 = TinyView(backgroundColor: .cyan)
     let tinyView5 = TinyView(backgroundColor: .orange)
 
+//    lazy var oldConstraints = tinyView1.size(CGSize(width: 100, height: 100), isActive: false)
+    lazy var newConstraints = tinyView1.size(CGSize(width: 300, height: 200), isActive: false)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -26,20 +29,13 @@ class ViewController: UIViewController {
 
 extension ViewController {
     private func addConstraints() {
-        view.addSubview(tinyView0)
-        tinyView0.edgesToSuperview(
-            excluding: .bottom,
-            insets: TinyEdgeInsets(top: 10, left: 10, bottom: 0, right: 10),
-            usingSafeArea: true)
-//        tinyView0.height(300)
+        view.addSubview(tinyView1)
+        tinyView1.originToSuperview(insets: TinyEdgeInsets(top: 10, left: 10, bottom: 0, right: 0), usingSafeArea: true)
 
-        tinyView1.height(100)
-        tinyView2.height(200)
-        tinyView0.stack([tinyView1, tinyView2], axis: .vertical, spacing: 10)
+        newConstraints.activate()
 
-
-        tinyView4.width(100)
-        tinyView5.width(100)
-        tinyView1.stack([tinyView4, tinyView5, UIView()], axis: .horizontal, spacing: 10)
+        UIViewPropertyAnimator(duration: 5, dampingRatio: 0.4) {
+            self.view.layoutIfNeeded()
+        }.startAnimation()
     }
 }
