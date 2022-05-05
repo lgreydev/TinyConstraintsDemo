@@ -10,7 +10,7 @@ import TinyConstraints
 
 class ViewController: UIViewController {
 
-// MARK: -  View
+// MARK: - View
     let navBar = TinyView(backgroundColor: .lightGray, cornerRadius: 0, borderWidth: 0)
     let borderBar = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
 
@@ -29,19 +29,15 @@ class ViewController: UIViewController {
 // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        title = "Hello"
 
-        setupSelf()
         addConstraints()
     }
 }
 
-// MARK: - Extension VC
+// MARK: - Constraints
 extension ViewController {
-    private func setupSelf() {
-        view.backgroundColor = .white
-        title = "Hello"
-    }
-
     private func addConstraints() {
         view.addSubview(navBar)
         navBar.height(100)
