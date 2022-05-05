@@ -10,10 +10,10 @@ import TinyConstraints
 
 class ViewController: UIViewController {
 
-// MARK: - View
+    // MARK: - View
     let navBar = TinyView(backgroundColor: .lightGray, cornerRadius: 0, borderWidth: 0)
     let borderBar = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
-    let borderBarSecond = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
+    let secondBorderBar = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
 
     lazy var timeBarButtonItem: UIImageView = {
         let view = UIImageView()
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Thin", size: 18.0)!,
             NSAttributedString.Key.paragraphStyle: style
-            ]
+        ]
 
         let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
 
@@ -52,54 +52,82 @@ class ViewController: UIViewController {
         return view
     }()
 
-// MARK: - Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Hello"
 
+        addViews()
         addConstraints()
     }
 }
 
-// MARK: - Constraints
+// MARK: - 
 extension ViewController {
-    private func addConstraints() {
+    private func addViews() {
         view.addSubview(navBar)
+        view.addSubview(borderBar)
+        view.addSubview(timeBarButtonItem)
+        view.addSubview(menuBarButtonItem)
+        view.addSubview(textDescription)
+        view.addSubview(secondBorderBar)
+        view.addSubview(containerView)
+    }
+
+    //MARK: - Constraints
+    private func addConstraints() {
+
+        constrainsNavBar()
+        constrainsBorderBar()
+        constrainsTimeBarButtonItem()
+        constrainsMenuBarButtonItem()
+        constrainsTextDescription()
+        constrainsSecondBorderBar()
+        constrainsContainerView()
+    }
+
+    private func constrainsNavBar() {
         navBar.height(100)
         navBar.alpha = 0.5
         navBar.edgesToSuperview(excluding: .bottom)
+    }
 
-        view.addSubview(borderBar)
+    private func constrainsBorderBar() {
         borderBar.height(1)
         borderBar.leadingToSuperview()
         borderBar.trailingToSuperview()
         borderBar.topToBottom(of: navBar)
+    }
 
-        view.addSubview(timeBarButtonItem)
+    private func constrainsTimeBarButtonItem() {
         timeBarButtonItem.leadingToSuperview(offset: 8)
         timeBarButtonItem.bottom(to: navBar, offset: -8)
         timeBarButtonItem.size(CGSize(width: 45, height: 45))
+    }
 
-        view.addSubview(menuBarButtonItem)
+    private func constrainsMenuBarButtonItem() {
         menuBarButtonItem.trailingToSuperview(offset: 8)
         menuBarButtonItem.bottom(to: navBar, offset: -8)
         menuBarButtonItem.size(CGSize(width: 45, height: 45))
+    }
 
-        view.addSubview(textDescription)
+    private func constrainsTextDescription() {
         textDescription.height(40)
         textDescription.leadingToSuperview()
         textDescription.trailingToSuperview()
         textDescription.topToBottom(of: borderBar)
+    }
 
-        view.addSubview(borderBarSecond)
-        borderBarSecond.height(1)
-        borderBarSecond.leadingToSuperview()
-        borderBarSecond.trailingToSuperview()
-        borderBarSecond.topToBottom(of: textDescription)
+    private func constrainsSecondBorderBar() {
+        secondBorderBar.height(1)
+        secondBorderBar.leadingToSuperview()
+        secondBorderBar.trailingToSuperview()
+        secondBorderBar.topToBottom(of: textDescription)
+    }
 
-        view.addSubview(containerView)
-        containerView.topToBottom(of: borderBarSecond)
+    private func constrainsContainerView() {
+        containerView.topToBottom(of: secondBorderBar)
         containerView.edgesToSuperview(excluding: .top)
     }
 }
