@@ -46,6 +46,12 @@ class ViewController: UIViewController {
         return view
     }()
 
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+
 // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,5 +97,9 @@ extension ViewController {
         borderBarSecond.leadingToSuperview()
         borderBarSecond.trailingToSuperview()
         borderBarSecond.topToBottom(of: textDescription)
+
+        view.addSubview(containerView)
+        containerView.topToBottom(of: borderBarSecond)
+        containerView.edgesToSuperview(excluding: .top)
     }
 }
