@@ -10,11 +10,12 @@ import TinyConstraints
 
 class ViewController: UIViewController {
 
-    // MARK: - View
-    let navBar = TinyView(backgroundColor: .lightGray, cornerRadius: 0, borderWidth: 0)
-    let firstLine = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
-    let secondLine = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
-    let thirdLine = TinyView(backgroundColor: .gray, cornerRadius: 0, borderWidth: 0)
+    // MARK: - Views
+    let navBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        return view
+    }()
 
     lazy var timeBarButtonItem: UIImageView = {
         let view = UIImageView()
@@ -53,6 +54,12 @@ class ViewController: UIViewController {
         return view
     }()
 
+    lazy var gridView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +68,6 @@ class ViewController: UIViewController {
 
         addViews()
         addConstraints()
-
-        let lines = [firstLine, secondLine, thirdLine]
-        configureLines(lines)
     }
 }
 
@@ -71,37 +75,28 @@ class ViewController: UIViewController {
 extension ViewController {
     private func addViews() {
         view.addSubview(navBar)
-        view.addSubview(firstLine)
         view.addSubview(timeBarButtonItem)
         view.addSubview(menuBarButtonItem)
         view.addSubview(textDescription)
-        view.addSubview(secondLine)
         view.addSubview(businessInformationView)
-        view.addSubview(thirdLine)
+        view.addSubview(gridView)
     }
 
     //MARK: - Constraints
     private func addConstraints() {
         addNavBar()
-        addFirstLine()
         addTimeBarButtonItem()
         addMenuBarButtonItem()
         addTextDescription()
-        addSecondLine()
         addBusinessInformationView()
-        addThirdLine()
+        addGridView()
     }
 
     private func addNavBar() {
         navBar.height(100)
         navBar.alpha = 0.5
         navBar.edgesToSuperview(excluding: .bottom)
-    }
-
-    private func addFirstLine() {
-        firstLine.leadingToSuperview()
-        firstLine.trailingToSuperview()
-        firstLine.topToBottom(of: navBar)
+        addBorder(to: navBar, position: .bottom)
     }
 
     private func addTimeBarButtonItem() {
@@ -120,33 +115,43 @@ extension ViewController {
         textDescription.height(40)
         textDescription.leadingToSuperview()
         textDescription.trailingToSuperview()
-        textDescription.topToBottom(of: firstLine)
-    }
-
-    private func addSecondLine() {
-        secondLine.leadingToSuperview()
-        secondLine.trailingToSuperview()
-        secondLine.topToBottom(of: textDescription)
+        textDescription.topToBottom(of: navBar)
     }
 
     private func addBusinessInformationView() {
         businessInformationView.height(400)
-        businessInformationView.topToBottom(of: secondLine)
+        businessInformationView.topToBottom(of: textDescription)
         businessInformationView.leadingToSuperview()
         businessInformationView.trailingToSuperview()
+        addBorder(to: businessInformationView, position: .top)
+        addBorder(to: businessInformationView, position: .bottom)
     }
 
-    private func addThirdLine() {
-        thirdLine.leadingToSuperview()
-        thirdLine.trailingToSuperview()
-        thirdLine.topToBottom(of: businessInformationView)
+    private func addGridView() {
+        gridView.height(40)
+        gridView.leadingToSuperview()
+        gridView.trailingToSuperview()
+        gridView.topToBottom(of: businessInformationView)
+        addBorder(to: gridView, position: .bottom)
     }
 
-    // MARK: - Configure
-    private func configureLines(_ borders: [TinyView]) {
-        for border in borders {
-            border.alpha = 0.3
-            border.height(1)
+    // MARK: - Border
+    private func addBorder(to view: UIView, position: Position) {
+
+        let border = UIView()
+        view.addSubview(border)
+        border.backgroundColor = .black
+        border.alpha = 0.3
+        border.height(1)
+
+        switch position {
+            case .top: border.edgesToSuperview(excluding: .bottom)
+            case .bottom: border.edgesToSuperview(excluding: .top)
         }
     }
+}
+
+enum Position {
+    case top
+    case bottom
 }
