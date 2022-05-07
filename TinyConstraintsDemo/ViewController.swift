@@ -60,10 +60,35 @@ class ViewController: UIViewController {
         return view
     }()
 
+    lazy var gridImageView1: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Grid1")
+        return view
+    }()
+
+    lazy var gridImageView2: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Grid2")
+        return view
+    }()
+
+    lazy var gridImageView3: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Grid3")
+        return view
+    }()
+
+    lazy var gridStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.distribution = .equalCentering
+        return view
+    }()
+
     lazy var postView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Posts")
-        view.contentMode = .scaleToFill
+//        view.contentMode = .scaleToFill
         return view
     }()
 
@@ -141,7 +166,34 @@ extension ViewController {
         gridView.leadingToSuperview()
         gridView.trailingToSuperview()
         gridView.topToBottom(of: businessInformationView)
+
+//        addItemToGridStackView()
+//        configureGridImageView()
+
+//        gridView.addSubview(gridStackView)
+//        gridStackView.edgesToSuperview()
+
+    
         addBorder(to: gridView, position: .bottom)
+    }
+
+    private func addItemToGridStackView() {
+        gridStackView.addArrangedSubview(gridImageView1)
+        gridStackView.addArrangedSubview(gridImageView2)
+        gridStackView.addArrangedSubview(gridImageView3)
+    }
+
+    private func configureGridImageView() {
+        gridImageView1.width(30)
+        gridImageView1.aspectRatio(1)
+//        gridImageView1.leadingToSuperview(offset: 20)
+
+        gridImageView2.width(30)
+        gridImageView2.aspectRatio(1)
+
+        gridImageView3.width(30)
+        gridImageView3.aspectRatio(1)
+//        gridImageView3.trailingToSuperview(offset: 20)
     }
 
     private func addPostView() {
