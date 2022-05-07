@@ -60,6 +60,13 @@ class ViewController: UIViewController {
         return view
     }()
 
+    lazy var postView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Posts")
+        view.contentMode = .scaleToFill
+        return view
+    }()
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +87,7 @@ extension ViewController {
         view.addSubview(textDescription)
         view.addSubview(businessInformationView)
         view.addSubview(gridView)
+        view.addSubview(postView)
     }
 
     //MARK: - Constraints
@@ -90,11 +98,12 @@ extension ViewController {
         addTextDescription()
         addBusinessInformationView()
         addGridView()
+        addPostView()
     }
 
     private func addNavBar() {
         navBar.height(100)
-        navBar.alpha = 0.5
+        navBar.alpha = 0.2
         navBar.edgesToSuperview(excluding: .bottom)
         addBorder(to: navBar, position: .bottom)
     }
@@ -133,6 +142,13 @@ extension ViewController {
         gridView.trailingToSuperview()
         gridView.topToBottom(of: businessInformationView)
         addBorder(to: gridView, position: .bottom)
+    }
+
+    private func addPostView() {
+        postView.height(600)
+        postView.leadingToSuperview()
+        postView.trailingToSuperview()
+        postView.topToBottom(of: gridView)
     }
 
     // MARK: - Border
