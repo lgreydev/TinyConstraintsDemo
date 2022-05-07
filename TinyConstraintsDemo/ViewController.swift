@@ -167,33 +167,32 @@ extension ViewController {
         gridView.trailingToSuperview()
         gridView.topToBottom(of: businessInformationView)
 
-//        addItemToGridStackView()
-//        configureGridImageView()
+        addImageToGridView()
+        configureImageToGridView()
 
-//        gridView.addSubview(gridStackView)
-//        gridStackView.edgesToSuperview()
-
-    
         addBorder(to: gridView, position: .bottom)
     }
 
-    private func addItemToGridStackView() {
-        gridStackView.addArrangedSubview(gridImageView1)
-        gridStackView.addArrangedSubview(gridImageView2)
-        gridStackView.addArrangedSubview(gridImageView3)
+    private func addImageToGridView() {
+        gridView.addSubview(gridImageView1)
+        gridView.addSubview(gridImageView2)
+        gridView.addSubview(gridImageView3)
     }
 
-    private func configureGridImageView() {
+    private func configureImageToGridView() {
         gridImageView1.width(30)
         gridImageView1.aspectRatio(1)
-//        gridImageView1.leadingToSuperview(offset: 20)
+        gridImageView1.leadingToSuperview(offset: 20)
+        gridImageView1.centerYToSuperview()
 
         gridImageView2.width(30)
         gridImageView2.aspectRatio(1)
+        gridImageView2.centerInSuperview()
 
         gridImageView3.width(30)
         gridImageView3.aspectRatio(1)
-//        gridImageView3.trailingToSuperview(offset: 20)
+        gridImageView3.trailingToSuperview(offset: 20)
+        gridImageView3.centerYToSuperview()
     }
 
     private func addPostView() {
