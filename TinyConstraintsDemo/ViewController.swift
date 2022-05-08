@@ -78,17 +78,9 @@ class ViewController: UIViewController {
         return view
     }()
 
-    lazy var gridStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .equalCentering
-        return view
-    }()
-
     lazy var postView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Posts")
-//        view.contentMode = .scaleToFill
         return view
     }()
 
